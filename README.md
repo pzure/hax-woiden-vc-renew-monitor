@@ -22,20 +22,20 @@
   ```ini
   [email_info]
   #发件方邮箱
-  sender_email = mgr@auxos.cn
+  sender_email = 
   #密码或者key
-  sender_password = Xx961024
+  sender_password = 
   #收件人信息,多个请用英文逗号隔开
-  receiver_email = 1067505792@qq.com
+  receiver_email = 
   #smtp服务器,默认是QQ邮箱,如用其他邮箱请自行修改
-  smtp_server = smtp.auxos.cn
+  smtp_server = 
   #邮件标题(修改即生效)
   subject = VPS即将到期通知
   [tgbot_info]
   #telegram 机器人的key
-  tgbot_token = 5909358680:AAE3Xwbm31K4AGQ9ctKy29Eb9t1BC6Mth0g
+  tgbot_token = 
   #指定推送的TGchatid,如有多个ID用英文逗号(,)隔开,选择tgbot则此项必填
-  chat_ids = 5590579324,
+  chat_ids = 
   ```
 * 配置网页端口信息
   默认端口8080，访问 `ip:8080` 修改该项后使用 `ip:端口` 访问
