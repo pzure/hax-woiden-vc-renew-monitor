@@ -45,6 +45,13 @@ def selectSql():
     res = exec.fetchall()
     conn.close()
     return res
+def selectSql_VPS_ID(id):
+    conn = connSqlite()
+    exec = conn.cursor()
+    exec.execute('select * from vps where id = ?',(id,))
+    res = exec.fetchall()
+    conn.close()
+    return res
 def updateInfoSql(creation_date,valid_until,location,ipv6,ram,disk_total,id):
     conn = connSqlite()
     exec = conn.cursor()

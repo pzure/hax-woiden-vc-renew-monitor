@@ -69,7 +69,6 @@
             background-position: center;
             background-attachment: scroll;
         }
-
         /* 在这里定义样式 */
         .box {
             width: 100%;
@@ -77,9 +76,132 @@
             background-repeat: no-repeat !important;
             background-size: cover !important;
             position: absolute;
-            display: None;
+            display: block;
         }
-        .overlay,.add_window, .modify_window{
+        .box h1 {
+            text-align: center;
+            margin-top: 8%;
+        }
+        .box .add_span {
+            display: none;
+        }
+        .box .content {
+            width: 100%;
+            min-height: 200px;
+            /* background-color: rgba(125, 125, 125, 0.4); */
+            margin: auto;
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+        .vps #vpsHeader{
+            padding-top: 10px;
+            font-weight: 900;
+            height: 30px;
+            background-color: rgba(55, 253, 226, 0.2);
+            
+            border-bottom: 1px solid #555;
+        }
+        .vps #vpsHeader #opsVal,button {
+            display: none;
+        }
+        .vps {
+            width: 350px;
+            height: 150px;
+            /* background: linear-gradient(to bottom, #4fbcde, #ffcc02); */
+            background-color: rgba(255, 255, 255, 0.4);
+            /* border-radius: 30px; */
+            margin: 5px;
+            text-align: center;
+            float: left;
+            box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
+            /* overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap; */
+        }
+
+        .vps span {
+            width: 100%;
+            height: 30px;
+            float: left;
+        }
+
+        .vps #name {
+            width: 100%;
+            display: flex;
+            justify-items: center;
+            padding-left: 20px;
+            /* padding-left: 15px; */
+            color: #000000;
+        }
+
+        .vps #vpsHeader {
+            padding-top: 10px;
+            font-weight: 900;
+            height: 30px;
+            background-color: rgba(55, 253, 226, 0.2);
+            border-bottom: 1px solid #555;
+        }
+
+        .vps #vpsInfo {
+            height: 109px;
+            width: 100%;
+        }
+
+        .vps #vpsInfo span {
+            width: 120px;
+            height: 21px;
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 550;
+            color: #555;
+
+        }
+
+        .vps #vpsInfo h5 {
+            width: 200px;
+            height: 21px;
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            color: #555;
+            /* padding-right: 20px; */
+        }
+        .vps #vpsHeader button{
+            width: 45px;
+            height: 25px;
+            border: none;
+            background-color: rgb(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        .vps #vpsHeader #cookieVal,
+        .vps #vpsHeader #opsVal {
+            display: none;
+        }
+
+        .vps .ip_address {
+            width: 300px;
+            height: 1.2em;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            /* display: inline-block;
+            width: 100px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis; */
+        }
+
+        .vps .ip_address:hover {
+            overflow: visible;
+        }
+        .overlay,
+        .add_window,
+        .modify_window {
             display: none;
         }
     }
@@ -130,6 +252,9 @@
             text-align: center;
             flex-wrap: wrap;
         }
+        #opsVal{
+            display: none;
+        }
 
         .content .child {
             /* 确保子元素不会超出 content 的高度 */
@@ -154,7 +279,7 @@
             text-align: center;
             border-radius: 10px;
             width: 30%;
-            height: 40%;
+            height: 350px;
             background-color: #ffffff;
             display: None;
             position: fixed;
@@ -171,7 +296,7 @@
             text-align: center;
             border-radius: 10px;
             width: 30%;
-            height: 40%;
+            height: 350px;
             background-color: #ffffff;
             display: None;
             position: fixed;
@@ -278,25 +403,8 @@
             color: #000000;
         }
 
-        .vps #btn {
-            width: 40px;
-            text-align: center;
-            float: right;
-            background-color: rgb(255, 255, 255, 1);
-            /* border: None; */
-            margin-right: 20px;
-            font-weight: 500;
-            border: 1px;
-            height: 20px;
-            box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.5);
-            cursor: pointer;
-            /* border-radius: 5px; */
-        }
-
         .vps #vpsHeader {
             padding-top: 10px;
-            /* border-top-left-radius: 30px;
-            border-top-right-radius: 30px; */
             font-weight: 900;
             height: 30px;
             background-color: rgba(55, 253, 226, 0.2);
@@ -329,7 +437,13 @@
             color: #555;
             /* padding-right: 20px; */
         }
-
+        .vps #vpsHeader button{
+            width: 45px;
+            height: 25px;
+            border: none;
+            background-color: rgb(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
         .vps #vpsHeader #cookieVal,
         .vps #vpsHeader #opsVal {
             display: none;
@@ -430,7 +544,7 @@
         const content = $('.content');
         const blocks = []; // 存放要添加的元素的数组
         const template = (item) => {
-            const pstTime = new Date(item[5] + ' 00:00:00 PST');
+            const pstTime = new Date(item[4] + ' 00:00:00 PST');
             pstTime.setHours(pstTime.getHours() + 23);
             pstTime.setMinutes(pstTime.getMinutes() + 59);
             pstTime.setSeconds(pstTime.getSeconds() + 59); // 在PST时间上加上23小时59分59秒
@@ -442,27 +556,24 @@
             const utcTime = new Date(utcTimestamp);
             var utcStr
             // 转换成UTC+8时间字符串
-            if (utcTime == 'Invalid Date'){
+            if (utcTime == 'Invalid Date') {
                 utcStr = 'null';
-            }else{
+            } else {
                 utcStr = utcTime.toISOString().replace('Z', ' UTC+8').replace('T', ' ').substring(0, 19);
             }
             return `
                 <div id='vpsHeader'>
-                <span id='cookieVal'>${item[3]}</span>
                 <span id='opsVal'>${item[2]}</span>
-                <span id='name'>${item[1]}</span>
+                <span id='name'><span style='color: ${ckDate(utcStr)[1]}; font-size: 15px; width: 55px'>${ckDate(utcStr)[0]}</span>:${item[1]}</span>
                 <button id='delBtn${item[0]}' value = '${item[0]}' style='color: red'>删除</button>
                 <button id='modifyBtn${item[0]}' value = '${item[0]}' style='color: green'>修改</button>
                 </div>
                 <div id='vpsInfo'>
-                <span>Cookie状态：</span> <h5 style='color: ${ckState(item[11])[1]}'>${ckState(item[11])[0]}</h5>
+                <span>Cookie状态：</span> <h5 style='color: ${ckState(item[7])[1]}'>${ckState(item[7])[0]}</h5>
                 <span>过期时间：</span> <h5 style="color: #ed9e37; font-size: 14px">${utcStr} UTC+8</h5>
-                <!-- <span>创建时间：</span> <h5>${item[4]} CST</h5> -->
-                <span>最近查询时间：</span> <h5>${item[10]}</h5>
-                <span>位置：</span> <h5>${item[2]}:${item[6]}</h5>
-                <!-- <span>IP地址：</span> <h5 class="ip_address">${item[7]}</h5> -->
-                <span>Creation Date：</span> <h5 class="ip_address">${item[4]}</h5>
+                <span>最近查询时间：</span> <h5>${item[6]}</h5>
+                <span>位置：</span> <h5>${item[2]}:${item[5]}</h5>
+                <span>Creation Date：</span> <h5 class="ip_address">${item[3]}</h5>
                 </div>
             `;
         };
@@ -504,75 +615,100 @@
         // 给所有修改按钮都添加点击事件的监听函数
         $('.content').on('click', '[id^="modifyBtn"]', function () {
             const btnValue = this.getAttribute('value'); // 获取当前按钮的 value
-            modify_window.style.display = "flex";
-            overlay.style.display = 'block';
-            const name = $(this).siblings('#name').html();
-            const ops = $(this).siblings('#opsVal').html();
-            const cookie = $(this).siblings('#cookieVal').html();
-            const formHTML = `
-        <h2>修改监控信息</h2>
-        <form id="modifyWindow">
-            <ul>
-                <li>
-                    <input type="text" id="id" name="id" value='${btnValue}' style="display: none" readonly required>
-                    <label for="ops">选择小鸡站：</label>
-                    <select id="ops" name="ops">
-                        <option value="hax" ${ops === 'hax' ? 'selected' : ''}>Hax</option>
-                        <option value="woiden" ${ops === 'woiden' ? 'selected' : ''}>Woiden</option>
-                        <option value="vc" ${ops === 'vc' ? 'selected' : ''}>Vc</option>
-                    </select>
-                </li>
-                <li>
-                    <label for="cookie">网页Cookie：</label>
-                    <input type="text" id="cookie" name="cookie" value='${cookie}' required>
-                </li>
-                <li>
-                    <label for="name">设置备注名：</label>
-                    <input type="text" id="name" name="name" value='${name}' required>
-                </li>
-                <li>
-                    <button type="submit" id="modify_commit">提交</button>
-                    <button type="button" id="cancel">取消</button>
-                </li>
-            </ul>
-        </form>
-    `;
-
-            modify_window.innerHTML = formHTML;
-            $('#modify_commit').on('click', function (event) {
-                event.preventDefault()
-                const formData = $('#modifyWindow').serialize(); // 获取表单数据
+            const pwd = prompt('请输入验证密码：');
+            if (pwd != null) {
                 $.ajax({
                     type: "POST",
-                    url: '/modify',
-                    data: formData,
-                    success: function (resp) {
-                        if (resp.msg === '修改成功') {
-                            // 修改成功后，隐藏 modify_window 和 overlay
-                            modify_window.style.display = 'none';
-                            overlay.style.display = 'none';
-                            selectAll()
-                        } else {
-                            console.log(resp);
-                        }
+                    url: '/checkPwd',
+                    data: {
+                        pwd: pwd
                     },
-                    error: function (xhr, status, error) {
+                    success: function (resp) {
+                        console.log(resp);
+                        if (resp['msg'] == 'success') {
+                            $.ajax({
+                                type: 'POST',
+                                url: '/sel_id',
+                                data: {
+                                    id: btnValue
+                                },
+                                success: function (resp) {
+                                    modify_window.style.display = "flex";
+                                    overlay.style.display = 'block';
+                                    const ops = resp['msg'][0][2]
+                                    const formHTML = `
+                                        <h2>修改监控信息</h2>
+                                        <form id="modifyWindow">
+                                            <ul>
+                                                <li>
+                                                    <input type="text" id="id" name="id" value='${resp['msg'][0][0]}' style="display: none" readonly required>
+                                                    <label for="ops">选择小鸡站：</label>
+                                                    <select id="ops" name="ops">
+                                                        <option value="hax" ${ops === 'hax' ? 'selected' : ''}>Hax</option>
+                                                        <option value="woiden" ${ops === 'woiden' ? 'selected' : ''}>Woiden</option>
+                                                        <option value="vc" ${ops === 'vc' ? 'selected' : ''}>Vc</option>
+                                                    </select>
+                                                </li>
+                                                <li>
+                                                    <label for="cookie">网页Cookie：</label>
+                                                    <input type="text" id="cookie" name="cookie" value='${resp['msg'][0][3]}' required>
+                                                </li>
+                                                <li>
+                                                    <label for="name">设置备注名：</label>
+                                                    <input type="text" id="name" name="name" value='${resp['msg'][0][1]}' required>
+                                                </li>
+                                                <li>
+                                                    <button type="submit" id="modify_commit">提交</button>
+                                                    <button type="button" id="cancel">取消</button>
+                                                </li>
+                                            </ul>
+                                        </form>
+                                    `;
+                                    modify_window.innerHTML = formHTML;
+                                    $('#modify_commit').on('click', function (event) {
+                                        event.preventDefault()
+                                        const formData = $('#modifyWindow').serialize(); // 获取表单数据
+                                        $.ajax({
+                                            type: "POST",
+                                            url: '/modify',
+                                            data: formData,
+                                            success: function (resp) {
+                                                if (resp.msg === '修改成功') {
+                                                    // 修改成功后，隐藏 modify_window 和 overlay
+                                                    modify_window.style.display = 'none';
+                                                    overlay.style.display = 'none';
+                                                    selectAll()
+                                                } else {
+                                                    console.log(resp);
+                                                }
+                                            },
+                                            error: function (xhr, status, error) {
+                                                console.error(xhr);
+                                                console.error(status);
+                                                console.error(error);
+                                            }
+                                        })
+                                    })
+                                    $('#cancel').on('click', function (event) {
+                                        modify_window.style.display = 'none';
+                                        overlay.style.display = 'none';
+                                    })
+                                    overlay.addEventListener("click", function () {
+                                        modify_window.style.display = 'none';
+                                        overlay.style.display = 'none';
+                                    })
+                                }
+                            })
+                        } else {
+                            alert('密码验证失败')
+                        }
+                    }, error: function (xhr, status, error) {
                         console.error(xhr);
                         console.error(status);
                         console.error(error);
                     }
                 })
-            })
-            $('#cancel').on('click', function (event) {
-                modify_window.style.display = 'none';
-                overlay.style.display = 'none';
-            })
-
-
-            overlay.addEventListener("click", function () {
-                modify_window.style.display = 'none';
-                overlay.style.display = 'none';
-            })
+            }
         });
     }
     function ckState(state) {
@@ -583,6 +719,18 @@
             monitor_stat_color = 'green';
         }
         return ([monitor_stat, monitor_stat_color])
+    }
+    function ckDate(state){
+        dt = (Math.floor((new Date(state) - new Date().getTime()) / (1000 * 60 * 60))) / 24;
+        if ( dt > 3 ) {
+            return(['正常','green'])
+        }else if(dt <= 3) {
+            return(['待续期','yellow'])
+        }else if (dt > 10 && dt < 0) {
+            return(['已过期', 'red'])
+        }else{
+            return(['已过期', 'red'])
+        }
     }
     function delContentChild() {
         const content = $(".content"); // 获取指定的 div 元素

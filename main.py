@@ -39,7 +39,7 @@ def add():
     return {'message':'添加成功'}
 @route('/select')
 def select():
-    return selectAllInfo()
+    return selectAllInfo_Info()
 @route('/del', method = 'POST')
 def delete():
     id = request.forms.get('id')
@@ -52,6 +52,24 @@ def delete():
     cookie = request.forms.get('cookie')
     return updateVPS([id, name, ops, cookie])
 
+@route('/checkPwd', method = 'POST')
+def checkPwd():
+    try:
+        res = conf('password')
+        Password = res['password']
+        pwd = request.forms.get('pwd')
+        if pwd == Password:
+            return {'msg': 'success'}
+        else:
+            return {'msg': 'reject'}
+    except:
+        print(conf('password'))
+        print(request.forms.get('pwd'))
+        print('error')
+@route('/sel_id', method = 'POST')
+def sel_Id():
+    id = request.forms.get('id')
+    return selectVPSForId(id)
 # run(host='localhost', port=8080, reloader=True, server='wsgiref')
 
 

@@ -41,12 +41,15 @@ def checkHaxInfo(vps):
             try:
                 updateInfoSql(info['VPS Creation Date'], info['Valid until'], info["Location"],info["IPv6"],info["Ram"],info["Total disk space"],vps[0])
             except Exception as e:
-                print('网页加载未完成,错误信息', e)
+                # print('网页加载未完成,错误信息', e)
+                pass
         else:
             updateState(0, vps[0])
-            print('cookie已过期')
+            # print('cookie已过期')
+            pass
     except:
-        print('网络异常，请求失败')
+        # print('网络异常，请求失败')
+        pass
 def checkWoidenInfo(vps):
     url = 'https://woiden.id/vps-info/'
     headers = {
@@ -68,12 +71,15 @@ def checkWoidenInfo(vps):
             try:
                 updateInfoSql(info['VPS Creation Date'], info['Valid until'], info["Location"],info["IPv6"],info["Ram"],info["Total disk space"],vps[0])
             except Exception as e:
-                print('网页加载未完成,错误信息', e)
+                # print('网页加载未完成,错误信息', e)
+                pass
         else:
             updateState(0, vps[0])
-            print('cookie已过期')
+            pass
+            # print('cookie已过期')
     except:
-        print('网络异常，请求失败')
+        pass
+        # print('网络异常，请求失败')
     
 def checkVCInfo(vps):
     url = 'https://free.vps.vc/vps-info'
@@ -97,19 +103,34 @@ def checkVCInfo(vps):
             try:
                 updateInfoSql(info['VPS Creation Date'], info['Valid until'], info["Location"],info["IPv6"],info["Ram"],info["Total disk space"],vps[0])
             except Exception as e:
-                print('网页加载未完成,错误信息', e)
+                # print('网页加载未完成,错误信息', e)
+                pass
         else:
             updateState(0, vps[0])
-            print(soup)
-            print('cookie已过期')
+            # print(soup)
+            # print('cookie已过期')
+            pass
     except:
-        print('网络异常，请求失败')
+        # print('网络异常，请求失败')
+        pass
 def selectAllInfo():
     res = selectSql()
     if res == []:
         return {'msg' : None}
     else:
         return{'msg': res}
+def selectAllInfo_Info():
+    res = selectSql()
+    if res == []:
+        return {'msg' : None}
+    else:
+        data = []
+        for vps in res:
+            data.append((vps[0],vps[1],vps[2],vps[4],vps[5],vps[6],vps[10],vps[11]))
+        return{'msg': data}
+def selectVPSForId(id):
+    res = selectSql_VPS_ID(id)
+    return {'msg': res}
 def deleteVPS(id):
     try:
         deleteVps(id)
@@ -130,13 +151,14 @@ def checkDateTime():
                 # 将PST时间字符串转换为datetime对象，并设置时区为America/Los_Angeles
                 pst_time = datetime.datetime.strptime(vps[5], "%B %d, %Y").replace(hour=0, minute=0, second=0, microsecond=0, tzinfo=pytz.timezone('America/Los_Angeles'))
                 # 在PST时间上加上23小时59分59秒
-                pst_time = pst_time + datetime.timedelta(hours=23, minutes=59, seconds=59)+ datetime.timedelta(minutes=7)
+                pst_time = pst_time + datetime.timedelta(hours=23, minutes=59, seconds=59) + datetime.timedelta(minutes=7)
                 # 将时区转换为Asia/Shanghai，并格式化为UTC+8时间字符串
                 utc_time = pst_time.astimezone(pytz.timezone('Asia/Shanghai'))
                 delta_time = utc_time - datetime.datetime.now(pytz.timezone('Asia/Shanghai'))
                 if delta_time < datetime.timedelta(days=3):
+                    
                     # print(f'小于5天{delta_time}')
-                    sendMsg(vps[0], f"你的{vps[2]}小鸡,名称:{vps[1]}即将到期,到期时间为{utc_time},距离到期还剩下{delta_time}")
+                    sendMsg(vps[0], f"你的{vps[2]}小鸡\n名称:{vps[1]}即将到期\n到期时间为{utc_time}\n距离到期还剩下{delta_time}")
                 # else:
                 #     print(f'大于5天{delta_time}')
         except:

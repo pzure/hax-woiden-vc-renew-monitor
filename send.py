@@ -24,10 +24,10 @@ def sendMsg(m_id, msg):
         if options['tgbot'] == '1' and options['email'] == '0':
             tg(m_id, msg)
         elif options['tgbot'] == '0' and options['email'] == '1':
-            print('EMAIL')
+            mail(m_id, msg)
         elif options['tgbot'] == '1' and options['email'] == '1':
-            tg(msg)
-            mail(msg)
+            tg(m_id, msg)
+            mail(m_id, msg)
         else:
             print('配置文件读取不正确')
     
@@ -52,7 +52,7 @@ def tg(m_id, msg):
             except:
                 print('TGbot接口请求失败,发送失败')
         else:
-            if (datetime.datetime.now() - datetime.datetime.strptime(res[0][4], '%Y-%m-%d %H:%M:%S')) > datetime.timedelta(hours=1):
+            if (datetime.datetime.now() - datetime.datetime.strptime(res[0][4], '%Y-%m-%d %H:%M:%S')) > datetime.timedelta(minutes=30):
                 item = conf('tgbot_info')
                 bot_token = item['tgbot_token']
                 chat_ids = item['chat_ids'].split(',')
@@ -75,7 +75,7 @@ def tg(m_id, msg):
         pass
 def mail(m_id, msg):
     try:
-        res = selectSend(m_id, 1)
+        res = selectSend(m_id, 2)
         if len(res) == 0:
             ei = conf('email_info')
             for r_email in ei['receiver_email'].split(','):
@@ -97,7 +97,7 @@ def mail(m_id, msg):
                 except Exception as e:
                     print(f'通知邮件发送失败,错误信息{e}')
         else:
-            if (datetime.datetime.now() - datetime.datetime.strptime(res[0][4], '%Y-%m-%d %H:%M:%S')) > datetime.timedelta(hours=12):
+            if (datetime.datetime.now() - datetime.datetime.strptime(res[0][4], '%Y-%m-%d %H:%M:%S')) > datetime.timedelta(hours=8):
                 ei = conf('email_info')
                 for r_email in ei['receiver_email'].split(','):
                     message = MIMEText(msg, 'plain', 'utf-8')
