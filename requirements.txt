@@ -1,0 +1,4 @@
+beautifulsoup4==4.12.2
+bottle==0.12.25
+pytz==2023.3
+requests==2.28.2
