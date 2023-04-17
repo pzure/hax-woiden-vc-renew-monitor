@@ -721,7 +721,9 @@
         return ([monitor_stat, monitor_stat_color])
     }
     function ckDate(state){
-        dt = (Math.floor((new Date(state) - new Date().getTime()) / (1000 * 60 * 60))) / 24;
+        dt = ((new Date(state) - new Date().getTime()) / 1000).toFixed(2);
+        dt = dt/3600/24;
+        console.log(dt);
         if ( dt > 3 ) {
             return(['正常','green'])
         }else if(dt <= 3) {
