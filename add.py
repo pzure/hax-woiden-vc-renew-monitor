@@ -41,11 +41,11 @@ def checkHaxInfo(vps):
             try:
                 updateInfoSql(info['VPS Creation Date'], info['Valid until'], info["Location"],info["IPv6"],info["Ram"],info["Total disk space"],vps[0])
             except Exception as e:
-                # print('网页加载未完成,错误信息', e)
+                updateState(1, vps[0])
                 pass
         else:
             updateState(0, vps[0])
-            # print('cookie已过期')
+            print('cookie已过期')
             pass
     except:
         # print('网络异常，请求失败')
@@ -69,15 +69,17 @@ def checkWoidenInfo(vps):
                 if k.text in ['VPS Creation Date','Valid until',"IPv6","Location","Total disk space","Ram"]:
                     info.update({k.text:str(v.text).strip()})
             try:
+                # print('success')
                 updateInfoSql(info['VPS Creation Date'], info['Valid until'], info["Location"],info["IPv6"],info["Ram"],info["Total disk space"],vps[0])
             except Exception as e:
-                # print('网页加载未完成,错误信息', e)
+                updateState(1, vps[0])
                 pass
         else:
             updateState(0, vps[0])
             pass
             # print('cookie已过期')
-    except:
+    except Exception  as e:
+        # print(e)
         pass
         # print('网络异常，请求失败')
     
@@ -103,7 +105,7 @@ def checkVCInfo(vps):
             try:
                 updateInfoSql(info['VPS Creation Date'], info['Valid until'], info["Location"],info["IPv6"],info["Ram"],info["Total disk space"],vps[0])
             except Exception as e:
-                # print('网页加载未完成,错误信息', e)
+                updateState(1, vps[0])
                 pass
         else:
             updateState(0, vps[0])
@@ -156,7 +158,6 @@ def checkDateTime():
                 utc_time = pst_time.astimezone(pytz.timezone('Asia/Shanghai'))
                 delta_time = utc_time - datetime.datetime.now(pytz.timezone('Asia/Shanghai'))
                 if datetime.timedelta(days=0) < delta_time < datetime.timedelta(days=3):
-                    
                     # print(f'小于5天{delta_time}')
                     sendMsg(vps[0], f"你的{vps[2]}小鸡\n名称:{vps[1]}即将到期\n到期时间为{utc_time}\n距离到期还剩下{delta_time}")
                 # else:
