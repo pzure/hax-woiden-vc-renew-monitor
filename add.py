@@ -155,7 +155,7 @@ def checkDateTime():
                 # 将时区转换为Asia/Shanghai，并格式化为UTC+8时间字符串
                 utc_time = pst_time.astimezone(pytz.timezone('Asia/Shanghai'))
                 delta_time = utc_time - datetime.datetime.now(pytz.timezone('Asia/Shanghai'))
-                if delta_time < datetime.timedelta(days=3):
+                if datetime.timedelta(days=0) < delta_time < datetime.timedelta(days=3):
                     
                     # print(f'小于5天{delta_time}')
                     sendMsg(vps[0], f"你的{vps[2]}小鸡\n名称:{vps[1]}即将到期\n到期时间为{utc_time}\n距离到期还剩下{delta_time}")
