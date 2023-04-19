@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from bottle import route, run, template, debug, request
+from bottle import route, run, template, debug, request, static_file
 from add import *
 import threading, time, sys, signal
 
@@ -29,6 +29,10 @@ debug(True)
 @route('/')
 def home():
     return template('tpl/home.tpl')
+
+@route('/css/<fname>', method = 'GET')
+def home(fname):
+    return static_file(fname, root='/tpl')
 
 @route('/add', method = 'POST')
 def add():
