@@ -32,7 +32,7 @@ def home():
 
 @route('/css/<fname>', method = 'GET')
 def home(fname):
-    return static_file(fname, root='/tpl')
+    return static_file(fname, root='tpl/css')
 
 @route('/add', method = 'POST')
 def add():

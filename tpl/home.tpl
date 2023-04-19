@@ -138,7 +138,7 @@
             if (utcTime == 'Invalid Date') {
                 utcStr = 'null';
             } else {
-                utcStr = utcTime.toISOString().replace('Z', ' UTC+8').replace('T', ' ').substring(0, 19);
+                utcStr = utcTime.toISOString().replace('Z', ' UTC+8').replace('T', ' ').substring(0, 19)+' UTC+8';
             }
             return `
                 <div id='vpsHeader'>
@@ -149,7 +149,7 @@
                 </div>
                 <div id='vpsInfo'>
                 <span>Cookie状态：</span> <h5 style='color: ${ckState(item[7])[1]}'>${ckState(item[7])[0]}</h5>
-                <span>过期时间：</span> <h5 style="color: #ed9e37; font-size: 14px">${utcStr} UTC+8</h5>
+                <span>过期时间：</span> <h5 style="color: #ed9e37; font-size: 14px">${utcStr}</h5>
                 <span>最近查询时间：</span> <h5>${item[6]}</h5>
                 <span>位置：</span> <h5>${item[2]}:${item[5]}</h5>
                 <span>Creation Date：</span> <h5 class="ip_address">${item[3]}</h5>
