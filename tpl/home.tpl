@@ -302,15 +302,14 @@
     function ckDate(state){
         dt = ((new Date(state) - new Date().getTime()) / 1000).toFixed(2);
         dt = dt/3600/24;
-        console.log(dt);
         if ( dt > 3 ) {
             return(['正常','green'])
-        }else if(dt <= 3) {
+        }else if( 0 < dt && dt <= 3 ) {
             return(['待续期','yellow'])
-        }else if (dt > 10 && dt < 0) {
+        }else if (dt > 10 || dt < 0) {
             return(['已过期', 'red'])
         }else{
-            return(['已过期', 'red'])
+            return(['无状态', 'red'])
         }
     }
     function delContentChild() {
