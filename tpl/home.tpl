@@ -138,12 +138,19 @@
             if (utcTime == 'Invalid Date') {
                 utcStr = 'null';
             } else {
-                utcStr = utcTime.toISOString().replace('Z', ' UTC+8').replace('T', ' ').substring(0, 19)+' UTC+8';
+                utcStr = utcTime.toISOString().replace('Z', ' UTC+8').replace('T', ' ').substring(0, 19);
+            }
+            dt = ckDate(utcStr)
+            if (utcStr != 'null') {
+                utcStr = utcStr + ' UTC+8';
             }
             return `
                 <div id='vpsHeader'>
                 <span id='opsVal'>${item[2]}</span>
-                <span id='name'><span style='color: ${ckDate(utcStr)[1]}; font-size: 15px; width: 55px'>${ckDate(utcStr)[0]}</span>:${item[1]}</span>
+                <span id='name'>
+                    <span style='color: ${dt[1]}; font-size: 15px; width: 55px'>${dt[0]}</span>:
+                    <text id='headerName'>${item[1]}</text>
+                </span>
                 <button id='delBtn${item[0]}' value = '${item[0]}' style='color: red'>删除</button>
                 <button id='modifyBtn${item[0]}' value = '${item[0]}' style='color: green'>修改</button>
                 </div>
@@ -167,9 +174,9 @@
         // 给所有删除按钮都添加点击事件的监听函数
         $('.content').on('click', '[id^="delBtn"]', function () {
             const btnValue = this.getAttribute('value'); // 获取当前按钮的 value
-            const name = $(this).siblings('#name').html()// 获取当前条目的名称
+            const name = $(this).siblings('#name').find('#headerName').html()// 获取当前条目的名称
             const currentBtn = this; // 保存当前按钮的引用
-            const confirmed = confirm(`确定要删除 ${name} 的监控吗？`);
+            const confirmed = confirm(`确定要删除名为 ${name} 的监控吗？`);
             if (confirmed) {
                 $.ajax({
                     type: "POST",
@@ -187,7 +194,7 @@
                     }
                 })
             } else {
-                console.log('取消');
+                //    console.log('取消');
             }
         });
 
@@ -299,17 +306,17 @@
         }
         return ([monitor_stat, monitor_stat_color])
     }
-    function ckDate(state){
+    function ckDate(state) {
         dt = ((new Date(state) - new Date().getTime()) / 1000).toFixed(2);
-        dt = dt/3600/24;
-        if ( dt > 3 ) {
-            return(['正常','green'])
-        }else if( 0 < dt && dt <= 3 ) {
-            return(['待续期','yellow'])
-        }else if (dt > 10 || dt < 0) {
-            return(['已过期', 'red'])
-        }else{
-            return(['无状态', 'red'])
+        dt = dt / 3600 / 24;
+        if (dt > 3) {
+            return (['正常', 'green'])
+        } else if (0 < dt && dt <= 3) {
+            return (['待续期', 'yellow'])
+        } else if (dt > 10 || dt < 0) {
+            return (['已过期', 'red'])
+        } else {
+            return (['无状态', 'red'])
         }
     }
     function delContentChild() {

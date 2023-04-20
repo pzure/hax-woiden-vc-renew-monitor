@@ -1,420 +1,432 @@
 * {
-        margin: 0;
-        padding: 0;
-    }
+    margin: 0;
+    padding: 0;
+}
 
-    html,
+html,
+body {
+    height: 100vh;
+    width: 100vw;
+}
+
+/* 对于小于等于 768 像素的设备 */
+@media (max-width: 768px) {
     body {
-        height: 100vh;
-        width: 100vw;
+        background-image: url('2.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
     }
 
-    /* 对于小于等于 768 像素的设备 */
-    @media (max-width: 768px) {
-        body {
-            background-color: #fff;
-            background-image: url('2.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: scroll;
-        }
-        /* 在这里定义样式 */
-        .box {
-            width: 100%;
-            height: 100%;
-            background-repeat: no-repeat !important;
-            background-size: cover !important;
-            position: absolute;
-            display: block;
-        }
-        .box h1 {
-            text-align: center;
-            margin-top: 8%;
-        }
-        .box .add_span {
-            display: none;
-        }
-        .box .content {
-            width: 100%;
-            min-height: 200px;
-            /* background-color: rgba(125, 125, 125, 0.4); */
-            margin: auto;
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-            text-align: center;
-            flex-wrap: wrap;
-        }
-        .vps #vpsHeader{
-            padding-top: 10px;
-            font-weight: 900;
-            height: 30px;
-            background-color: rgba(55, 253, 226, 0.2);
-            
-            border-bottom: 1px solid #555;
-        }
-        .vps #vpsHeader #opsVal,button {
-            display: none;
-        }
-        .vps {
-            width: 350px;
-            height: 150px;
-            /* background: linear-gradient(to bottom, #4fbcde, #ffcc02); */
-            background-color: rgba(255, 255, 255, 0.4);
-            /* border-radius: 30px; */
-            margin: 5px;
-            text-align: center;
-            float: left;
-            box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
-            /* overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap; */
-        }
-
-        .vps span {
-            width: 100%;
-            height: 30px;
-            float: left;
-        }
-
-        .vps #name {
-            width: 100%;
-            display: flex;
-            justify-items: center;
-            padding-left: 20px;
-            /* padding-left: 15px; */
-            color: #000000;
-        }
-
-        .vps #vpsHeader {
-            padding-top: 10px;
-            font-weight: 900;
-            height: 30px;
-            background-color: rgba(55, 253, 226, 0.2);
-            border-bottom: 1px solid #555;
-        }
-
-        .vps #vpsInfo {
-            height: 109px;
-            width: 100%;
-        }
-
-        .vps #vpsInfo span {
-            width: 120px;
-            height: 21px;
-            display: flex;
-            justify-content: right;
-            align-items: center;
-            font-size: 12px;
-            font-weight: 550;
-            color: #555;
-
-        }
-
-        .vps #vpsInfo h5 {
-            width: 200px;
-            height: 21px;
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            color: #555;
-            /* padding-right: 20px; */
-        }
-        .vps #vpsHeader button{
-            width: 45px;
-            height: 25px;
-            border: none;
-            background-color: rgb(255, 255, 255, 0.5);
-            cursor: pointer;
-        }
-        .vps #vpsHeader #cookieVal,
-        .vps #vpsHeader #opsVal {
-            display: none;
-        }
-
-        .vps .ip_address {
-            width: 300px;
-            height: 1.2em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            /* display: inline-block;
-            width: 100px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis; */
-        }
-
-        .vps .ip_address:hover {
-            overflow: visible;
-        }
-        .overlay,
-        .add_window,
-        .modify_window {
-            display: none;
-        }
+    /* 在这里定义样式 */
+    .box {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat !important;
+        background-size: cover !important;
+        position: absolute;
+        display: block;
     }
 
-    /* 对于大于 768 像素的设备 */
-    @media (min-width: 769px) {
-        body {
-            background-color: #fff;
-            background-image: url('1.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: scroll;
-        }
+    .box h1 {
+        text-align: center;
+        margin-top: 8%;
+    }
 
-        .box {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            text-align: center;
-        }
+    .box .add_span {
+        display: none;
+    }
 
-        h1 {
-            text-align: center;
-            margin-top: 8%;
-        }
+    .box .content {
+        width: 100%;
+        min-height: 200px;
+        /* background-color: rgba(125, 125, 125, 0.4); */
+        margin: auto;
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+    }
 
-        .add_span {
-            display: block;
-            margin-top: 2%;
-            font-size: 14px;
-            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-        }
+    .vps #vpsHeader {
+        padding-top: 10px;
+        font-weight: 900;
+        height: 30px;
+        background-color: rgba(55, 253, 226, 0.2);
 
-        .add_span a {
-            cursor: pointer;
-        }
+        border-bottom: 1px solid #555;
+    }
 
-        .content {
-            max-width: 1175px;
-            min-height: 200px;
-            /* background-color: rgba(125, 125, 125, 0.4); */
-            margin: auto;
-            margin-top: 2%;
-            border-radius: 20px;
-            /* border: 1px dotted #4fbcde; */
-            display: flex;
-            justify-content: center;
-            text-align: center;
-            flex-wrap: wrap;
-        }
-        #opsVal{
-            display: none;
-        }
+    .vps #vpsHeader #opsVal,
+    button {
+        display: none;
+    }
 
-        .content .child {
-            /* 确保子元素不会超出 content 的高度 */
-            overflow: hidden;
-        }
+    .vps {
+        width: 350px;
+        height: 150px;
+        /* background: linear-gradient(to bottom, #4fbcde, #ffcc02); */
+        background-color: rgba(255, 255, 255, 0.4);
+        /* border-radius: 30px; */
+        margin: 5px;
+        text-align: center;
+        float: left;
+        box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
+        /* overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; */
+    }
 
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(125, 125, 125, 0.5);
-            /* 半透明黑色背景 */
-            z-index: 1;
-            /* 遮罩层置于最上层 */
-            display: none;
-            /* 初始状态下隐藏 */
-        }
+    .vps span {
+        width: 100%;
+        height: 30px;
+        float: left;
+    }
 
-        .add_window {
-            text-align: center;
-            border-radius: 10px;
-            width: 30%;
-            height: 350px;
-            background-color: #ffffff;
-            display: None;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            z-index: 2;
-            transform: translate(-50%, -50%);
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+    .vps #name {
+        width: 100%;
+        display: flex;
+        justify-items: center;
+        padding-left: 20px;
+        /* padding-left: 15px; */
+        color: #000000;
+    }
 
-        .modify_window {
-            text-align: center;
-            border-radius: 10px;
-            width: 30%;
-            height: 350px;
-            background-color: #ffffff;
-            display: None;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            z-index: 2;
-            transform: translate(-50%, -50%);
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
+    .vps #vpsHeader {
+        padding-top: 10px;
+        font-weight: 900;
+        height: 30px;
+        background-color: rgba(55, 253, 226, 0.2);
+        border-bottom: 1px solid #555;
+    }
 
-        .add_window form,
-        .modify_window form {
-            margin: 20px;
-        }
+    .vps #vpsInfo {
+        height: 109px;
+        width: 100%;
+    }
 
-        .add_window ul,
-        .modify_window ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .add_window li,
-        .modify_window li {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 20px;
-        }
-
-        .add_window label,
-        .modify_window label {
-            width: 120px;
-            text-align: right;
-            margin-right: 10px;
-            font-size: 16px;
-        }
-
-        .add_window input,
-        .modify_window input[type=text],
-        .add_window select,
-        .modify_window select {
-            flex: 1;
-            height: 30px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            padding: 5px;
-            font-size: 16px;
-            color: #555;
-        }
-
-        .add_window button,
-        .modify_window button {
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin-right: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-
-        .add_window button[type=submit],
-        .modify_window button[type=submit] {
-            background-color: #008CBA;
-        }
-
-        .add_window button[type=button].modify_window button[type=button] {
-            background-color: #f44336;
-        }
-
-        .vps {
-            width: 350px;
-            height: 150px;
-            /* background: linear-gradient(to bottom, #4fbcde, #ffcc02); */
-            background-color: rgba(255, 255, 255, 0.4);
-            /* border-radius: 30px; */
-            margin: 5px;
-            text-align: center;
-            float: left;
-            box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
-            /* overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap; */
-        }
-
-        .vps span {
-            width: 100%;
-            height: 30px;
-            float: left;
-        }
-
-        .vps #name {
-            width: 210px;
-            display: flex;
-            justify-items: center;
-            padding-left: 15px;
-            color: #000000;
-        }
-
-        .vps #vpsHeader {
-            padding-top: 10px;
-            font-weight: 900;
-            height: 30px;
-            background-color: rgba(55, 253, 226, 0.2);
-            border-bottom: 1px solid #555;
-        }
-
-        .vps #vpsInfo {
-            height: 109px;
-            width: 100%;
-        }
-
-        .vps #vpsInfo span {
-            width: 120px;
-            height: 21px;
-            display: flex;
-            justify-content: right;
-            align-items: center;
-            font-size: 12px;
-            font-weight: 550;
-            color: #555;
-
-        }
-
-        .vps #vpsInfo h5 {
-            width: 200px;
-            height: 21px;
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            color: #555;
-            /* padding-right: 20px; */
-        }
-        .vps #vpsHeader button{
-            width: 45px;
-            height: 25px;
-            border: none;
-            background-color: rgb(255, 255, 255, 0.5);
-            cursor: pointer;
-        }
-        .vps #vpsHeader #cookieVal,
-        .vps #vpsHeader #opsVal {
-            display: none;
-        }
-
-        .vps .ip_address {
-            width: 300px;
-            height: 1.2em;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            /* display: inline-block;
-            width: 100px;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis; */
-        }
-
-        .vps .ip_address:hover {
-            overflow: visible;
-        }
-
-        /* 在这里定义样式 */
+    .vps #vpsInfo span {
+        width: 120px;
+        height: 21px;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 550;
+        color: #555;
 
     }
+
+    .vps #vpsInfo h5 {
+        width: 200px;
+        height: 21px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        color: #555;
+        /* padding-right: 20px; */
+    }
+
+    .vps #vpsHeader button {
+        width: 45px;
+        height: 25px;
+        border: none;
+        background-color: rgb(255, 255, 255, 0.5);
+        cursor: pointer;
+    }
+
+    .vps #vpsHeader #cookieVal,
+    .vps #vpsHeader #opsVal {
+        display: none;
+    }
+
+    .vps .ip_address {
+        width: 300px;
+        height: 1.2em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* display: inline-block;
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; */
+    }
+
+    .vps .ip_address:hover {
+        overflow: visible;
+    }
+
+    .overlay,
+    .add_window,
+    .modify_window {
+        display: none;
+    }
+}
+
+/* 对于大于 768 像素的设备 */
+@media (min-width: 769px) {
+    body {
+        background-image: url('1.jpg');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    .box {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        text-align: center;
+    }
+
+    h1 {
+        text-align: center;
+        margin-top: 8%;
+    }
+
+    .add_span {
+        display: block;
+        margin-top: 2%;
+        font-size: 14px;
+        font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .add_span a {
+        cursor: pointer;
+    }
+
+    .content {
+        max-width: 1175px;
+        min-height: 200px;
+        /* background-color: rgba(125, 125, 125, 0.4); */
+        margin: auto;
+        margin-top: 2%;
+        border-radius: 20px;
+        /* border: 1px dotted #4fbcde; */
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        flex-wrap: wrap;
+    }
+
+    #opsVal {
+        display: none;
+    }
+
+    .content .child {
+        /* 确保子元素不会超出 content 的高度 */
+        overflow: hidden;
+    }
+
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(125, 125, 125, 0.5);
+        /* 半透明黑色背景 */
+        z-index: 1;
+        /* 遮罩层置于最上层 */
+        display: none;
+        /* 初始状态下隐藏 */
+    }
+
+    .add_window {
+        text-align: center;
+        border-radius: 10px;
+        width: 30%;
+        height: 350px;
+        background-color: #ffffff;
+        display: None;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+        transform: translate(-50%, -50%);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modify_window {
+        text-align: center;
+        border-radius: 10px;
+        width: 30%;
+        height: 350px;
+        background-color: #ffffff;
+        display: None;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        z-index: 2;
+        transform: translate(-50%, -50%);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .add_window form,
+    .modify_window form {
+        margin: 20px;
+    }
+
+    .add_window ul,
+    .modify_window ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .add_window li,
+    .modify_window li {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .add_window label,
+    .modify_window label {
+        width: 120px;
+        text-align: right;
+        margin-right: 10px;
+        font-size: 16px;
+    }
+
+    .add_window input,
+    .modify_window input[type=text],
+    .add_window select,
+    .modify_window select {
+        flex: 1;
+        height: 30px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        font-size: 16px;
+        color: #555;
+    }
+
+    .add_window button,
+    .modify_window button {
+        background-color: #4CAF50;
+        border: none;
+        color: white;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin-right: 10px;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .add_window button[type=submit],
+    .modify_window button[type=submit] {
+        background-color: #008CBA;
+    }
+
+    .add_window button[type=button].modify_window button[type=button] {
+        background-color: #f44336;
+    }
+
+    .vps {
+        width: 350px;
+        height: 150px;
+        /* background: linear-gradient(to bottom, #4fbcde, #ffcc02); */
+        background-color: rgba(255, 255, 255, 0.4);
+        /* border-radius: 30px; */
+        margin: 5px;
+        text-align: center;
+        float: left;
+        box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.4);
+        /* overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; */
+    }
+
+    .vps span {
+        width: 100%;
+        height: 30px;
+        float: left;
+    }
+
+    .vps #name {
+        width: 210px;
+        display: flex;
+        justify-items: center;
+        padding-left: 15px;
+        color: #000000;
+    }
+
+    .vps #vpsHeader {
+        padding-top: 10px;
+        font-weight: 900;
+        height: 30px;
+        background-color: rgba(55, 253, 226, 0.2);
+        border-bottom: 1px solid #555;
+    }
+
+    .vps #vpsInfo {
+        height: 109px;
+        width: 100%;
+    }
+
+    .vps #vpsInfo span {
+        width: 120px;
+        height: 21px;
+        display: flex;
+        justify-content: right;
+        align-items: center;
+        font-size: 12px;
+        font-weight: 550;
+        color: #555;
+
+    }
+
+    .vps #vpsInfo h5 {
+        width: 200px;
+        height: 21px;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        color: #555;
+        /* padding-right: 20px; */
+    }
+
+    .vps #vpsHeader button {
+        width: 45px;
+        height: 25px;
+        border: none;
+        background-color: rgb(255, 255, 255, 0.5);
+        cursor: pointer;
+    }
+
+    .vps #vpsHeader #cookieVal,
+    .vps #vpsHeader #opsVal {
+        display: none;
+    }
+
+    .vps .ip_address {
+        width: 300px;
+        height: 1.2em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        /* display: inline-block;
+        width: 100px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; */
+    }
+
+    .vps .ip_address:hover {
+        overflow: visible;
+    }
+
+    /* 在这里定义样式 */
+
+}
